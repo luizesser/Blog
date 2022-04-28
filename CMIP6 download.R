@@ -40,26 +40,12 @@ cmip6_data <- function(variable,year,gcm,ssp,resolution){
       for (y in 1:length(year)) {
         print(paste0(gcm[g], "_", ssp[s], "_", resolution, "_", year[y]))
         if(!dir.exists("WorldClim_data")){ dir.create("WorldClim_data") }
-        download.file(url = paste0("https://geodata.ucdavis.edu/cmip6/",
-                                   resolution,
-                                   res,
-                                   "/",
-                                   gcm3,
-                                   "/ssp",
-                                   ssp,
-                                   "/wc2.1_",
-                                   resolution,
-                                   res,
-                                   "_",
-                                   variable,
-                                   "_",
-                                   gcm3,
-                                   "_ssp",
-                                   ssp,
-                                   "_",
-                                   year3,
-                                   ".tif"), 
-                      destfile = paste0("WorldClim_data/",gcm[g], "_", ssp[s], "_", resolution, "_", year[y],".tif"), 
+        download.file(url = paste0("https://geodata.ucdavis.edu/cmip6/",resolution,
+                                   res,"/",gcm3,"/ssp",ssp,"/wc2.1_",resolution,
+                                   res,"_",variable,"_",gcm3,"_ssp",ssp,"_",
+                                   year3,".tif"), 
+                      destfile = paste0("WorldClim_data/",gcm[g], "_", ssp[s], 
+                                        "_", resolution, "_", year[y],".tif"), 
                       method = "auto")
       }
     }
